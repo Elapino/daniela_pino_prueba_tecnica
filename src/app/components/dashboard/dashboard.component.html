@@ -1,0 +1,59 @@
+<div *transloco="let t" class="min-h-screen flex-wrap flex px-8 pb-6 w-full">
+  <div class="flex w-full px-5 pt-5 place-content-end">
+    <button (click)="signOut()" [matTooltip]="t('lbl.tooltip.signOut')"
+      class="hover:scale-105 bg-gradient-to-r from-orange-400/90 to-red-400 min-w-10 shadow-md max-w-10 min-h-10 max-h-10 rounded-full">
+      <mat-icon class="icon-size-6 pl-0.5 pt-0.5 text-principal-0">logout</mat-icon>
+    </button>
+  </div>
+
+  <div class="w-full sm:w-1/2 sm:pr-2 pt-5">
+    <div class="w-full shadow-lg p-5 bg-principal-0 rounded-md sm:min-h-90 sm:max-h-90 border-2 content-center">
+      <div class="w-full flex justify-center md:justify-start">
+        <img src="./assets/image/icon/profile.PNG" alt="Profile" class="mb-5 shadow-md w-32 rounded-full" />
+      </div>
+      <span class="block text-red-400 text-2xl font-bold text-center md:text-start">
+        {{ user.username }}
+      </span>
+      <span class="block text-red-400 text-base font-bold text-center md:text-start">
+        {{ user.rol }}
+      </span>
+      <span class="block leading-5 pt-2 text-justify">
+        {{ t("lbl.auth.message") }}</span>
+    </div>
+  </div>
+
+  <div class="w-full sm:w-1/2 sm:pl-2 pt-5">
+    <div class="w-full shadow-lg p-5 bg-principal-0 rounded-md sm:min-h-90 sm:max-h-90 border-2 content-center">
+      <span class="block text-red-400 text-2xl font-bold my-2 text-center md:text-start">
+        {{ t("lbl.product.meal") }}
+      </span>
+      <span class="block text-base leading-5 pt-2 text-justify">
+        {{ t("lbl.product.mealText") }}
+      </span>
+      <div class="w-full overflow-x-scroll flex pt-5">
+        <app-shared-card *ngFor="let meal of meals" class="pb-2 mx-2" [card]="configCardMeal"
+          [product]="meal"></app-shared-card>
+      </div>
+    </div>
+  </div>
+
+  <div class="w-full py-5 flex-wrap flex">
+    <div class="w-full flex flex-wrap">
+      <app-shared-table class="w-full" [config]="configComponentTable"></app-shared-table>
+    </div>
+  </div>
+
+  <div class="w-full pt-5">
+    <div class="w-full shadow-lg p-5 bg-principal-0 rounded-md border-2 content-center">
+      <span class="block text-red-400 text-2xl font-bold my-2 text-center sm:text-start">
+        {{ t("lbl.product.productText") }}
+      </span>
+      <span class="block text-base leading-5 text-justify">
+        {{ t("lbl.product.mealText") }}
+      </span>
+      <div class="w-full overflow-x-scroll flex pt-6">
+        <app-shared-card *ngFor="let product of products" class="pb-5 mx-2" [card]="configCardProduct"
+          [product]="product"></app-shared-card>
+      </div>
+    </div>
+  </div>

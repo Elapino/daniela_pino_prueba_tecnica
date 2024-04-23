@@ -1,0 +1,118 @@
+{
+	"lbl": {
+		"auth": {
+			"admin": "Administrador",
+			"user": "Usuario",
+			"signInText": "Inicio de sesión",
+			"signUpText": "Registrarse",
+			"signUp": "Registro de usuario",
+			"email": "E-mail",
+			"confirmPassword": "Confirmar Contraseña",
+			"password": "Contraseña",
+			"signOut": "¡Has cerrado sesión!",
+			"redirect": "Redirección en",
+			"redirected": "¡Ahora estás siendo redirigido!",
+			"forgotPassword": "Olvidé mi contraseña",
+			"rememberMe": "Recuerdame",
+			"return": "Volver a",
+			"signIn": "ingreso",
+			"accept": "Acepto",
+			"go": "Ir a",
+			"message": "Maquetado diseñado con Angular 17 y Tailwind por Daniela Pino. En esta etapa, el aplicativo no tiene conexiones a servicios. Se ha realizado de manera intencional para centrarse en la evaluación de la parte del frontend",
+			"policyPrivacy": "la política de privacidad y protección de datos"
+		},
+		"tooltip": {
+			"delete": "Eliminar registro",
+			"download": "Descargar registro",
+			"edit": "Editar registro",
+			"signOut": "Cerrar sesión",
+			"create": "Crear",
+			"shoppingCar": "Mi carrito de compras"
+		},
+		"modal": {
+			"addToCar": "Añadir al carrito",
+			"car": "Carrito de Compras",
+			"addToCarText": "Seleccione la cantidad del producto que desea añadir al carrito",
+			"createProduct": "Creación de producto",
+			"editProduct": "Modificación de producto",
+			"productCreated": "El producto se creó de manera exitosa.",
+			"productEdited": "El producto se modificó de manera exitosa.",
+			"deleteProduct": "Eliminación de producto",
+			"confirmDeleteProduct": "¿Estás seguro de eliminar al producto?",
+			"successfulDeleteProduct": "El producto se eliminó de manera exitosa."
+		},
+		"product": {
+			"name": "Nombre",
+			"description": "Descripción",
+			"price": "Precio",
+			"quantity": "Cantidad",
+			"quantityAvailable": "Cantidad disponible",
+			"meal": "¡Descubre comidas de interés para tu negocio!",
+			"productText": "¡Descubre productos de interés para tu negocio!",
+			"mealText": "Se ha implementado una API gratuita para brindarte aún más opciones.",
+			"product": "Productos",
+			"registerProduct": "Registrar producto"
+		},
+		"shared": {
+			"actions": "Acciones",
+			"filter": "Filtro de busquedad"
+		},
+		"button": {
+			"continue": "Continuar",
+			"back": "Regresar",
+			"confirm": "Confirmar",
+			"update": "Actualizar",
+			"cancel": "Cancelar",
+			"add": "Agregar",
+			"edit": "Editar",
+			"clean": "Limpiar",
+			"consult": "Consultar",
+			"delete": "Eliminar",
+			"download": "Descargar",
+			"signIn": "Ingresar",
+			"save": "Guardar",
+			"pay": "Pagar",
+			"close": "Cerrar",
+			"checkIn": "Registrarse"
+		}
+	},
+	"msg": {
+		"auth": {
+			"forgotPassword": "Olvidé mi contraseña",
+			"message": "¿Contraseña olvidada?",
+			"createPassword": "Crear contraseña",
+			"message1": "Digita tu correo electrónico para restablecer tu contraseña",
+			"mailSent": "¡Restablecimiento de contraseña enviado! Recibirás un correo electrónico si estás registrado en nuestro sistema.",
+			"mailNoExist": "¡El correo electrónico no se encuentra! ¿Estás seguro de que ya eres miembro?",
+			"resetPassword": "Restablece tu contraseña",
+			"newPassword": "Crea una nueva contraseña para tu cuenta",
+			"passwordCreated": "¡Tu contraseña ha sido creada exitosamente!",
+			"successfulAction": "Acción realizada con éxito",
+			"error": "Error al realizar la acción",
+			"errorText": "¡Error!",
+			"error500": "Error interno del servidor",
+			"error404": "Recurso no encontrado",
+			"errorService": "Ha ocurrido un problema al realizar la acción",
+			"errorLogin": "¡Error! usuario o clave incorrecta."
+		},
+		"validator": {
+			"userNameRequired": "El usuario es obligatorio",
+			"emailRequired": "El correo es obligatorio",
+			"userNameValid": "Se debe ingresar un usuario válido",
+			"emailValid": "Ingrese un correo válido",
+			"passwordRequired": "La contraseña es obligatoria",
+			"passwordConfirmationRequired": "* Verificar contraseña es obligatorio",
+			"passwordMustHaveNumber": "* La contraseña debe tener al menos un número",
+			"passwordMustHaveCapitalLetter": "* La contraseña debe tener una mayúscula",
+			"passwordLength": "* La contraseña debe contener al menos 8 caracteres",
+			"passwordMustHaveSmallLetter": "* La contraseña debe tener una minúscula",
+			"passwordMustHaveSpecialCharacter": "* La contraseña debe tener un caracter especial",
+			"matchingPasswordsRequired": "* Las contraseñas deben coincidir",
+			"maxLength": "Máximo alcanzado",
+			"minLength": "Mínimo de 4 caracteres",
+			"min2Length": "Mínimo de 2 caracteres",
+			"min1Length": "Mínimo de 1 caracteres",
+			"fieldRequired": "El campo es obligatorio"
+		}
+	}
+}

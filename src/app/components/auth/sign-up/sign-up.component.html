@@ -1,0 +1,110 @@
+<div *transloco="let t"
+  class="min-h-screen flex justify-center items-center bg-principal-0 sm:bg-gradient-to-r sm:from-orange-400/90 sm:to-red-400/80">
+
+  <div class="bg-principal-0 p-8 rounded-2xl sm:shadow-lg text-center w-full sm:w-100 relative">
+    <span class="text-red-400 text-3xl font-bold">{{ t('lbl.auth.signUp') }}</span>
+
+    <form class="mt-2" [formGroup]="signUpForm" #signUpNgForm="ngForm">
+
+      <!-- User field -->
+      <mat-form-field class="w-full mt-6">
+        <mat-label>{{ t('lbl.auth.user') }}</mat-label>
+        <input matInput formControlName="username" id="username">
+        <mat-icon matPrefix class="text-red-400 icon-size-5">person</mat-icon>
+        <mat-error class="-mt-1" *ngIf="signUpForm.get('username').hasError('required')">
+          {{ t('msg.validator.userNameRequired') }}
+        </mat-error>
+        <mat-error class="-mt-1" *ngIf="signUpForm.get('username').hasError('maxlength')">
+          {{ t('msg.validator.maxLength') }}
+        </mat-error>
+        <mat-error class="-mt-1" *ngIf="signUpForm.get('username').hasError('minlength')">
+          {{ t('msg.validator.minLength') }}
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Email field -->
+      <mat-form-field class="w-full">
+        <mat-label>{{ t('lbl.auth.email') }}</mat-label>
+        <input matInput formControlName="email" id="email">
+        <mat-icon matPrefix class="text-red-400 icon-size-5">email</mat-icon>
+        <mat-error class="-mt-1" *ngIf="signUpForm.get('email').hasError('required')">
+          {{ t('msg.validator.emailRequired') }}
+        </mat-error>
+        <mat-error class="-mt-1"
+          *ngIf="signUpForm.get('email').hasError('email') && !signUpForm.get('email').hasError('minlength')">
+          {{ t('msg.validator.emailValid') }}
+        </mat-error>
+        <mat-error class="-mt-1" *ngIf="signUpForm.get('email').hasError('maxlength')">
+          {{ t('msg.validator.maxLength') }}
+        </mat-error>
+        <mat-error class="-mt-1" *ngIf="signUpForm.get('email').hasError('minlength')">
+          {{ t('msg.validator.minLength') }}
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Password field -->
+      <mat-form-field class="w-full">
+        <mat-label>{{ t('lbl.auth.password') }}</mat-label>
+        <input matInput type="password" formControlName="password" id="password" #passwordField>
+        <button mat-icon-button type="button"
+          (click)="passwordField.type === 'password' ? passwordField.type = 'text' : passwordField.type = 'password'"
+          matPrefix>
+          <mat-icon class="text-red-400 icon-size-5" *ngIf="passwordField.type === 'password'"> lock </mat-icon>
+          <mat-icon class="text-red-400 icon-size-5" *ngIf="passwordField.type === 'text'"> lock_open </mat-icon>
+        </button>
+        <mat-error
+          *ngIf="signUpForm.controls.password.errors?.required && signUpForm.controls.confirmPassword.errors?.required">
+          {{ t('msg.validator.passwordRequired') }}
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Password confirm field -->
+      <mat-form-field class="w-full">
+        <mat-label>{{ t('lbl.auth.confirmPassword') }}</mat-label>
+        <input id="password-confirm" maxLength="61" id="confirmPassword" formControlName="confirmPassword" matInput
+          type="password" #passwordConfirmField>
+        <button mat-icon-button type="button"
+          (click)="passwordConfirmField.type === 'password' ? passwordConfirmField.type = 'text' : passwordConfirmField.type = 'password'"
+          matPrefix>
+          <mat-icon class="text-red-400 icon-size-5" *ngIf="passwordConfirmField.type === 'password'"> lock
+          </mat-icon>
+          <mat-icon class="text-red-400 icon-size-5" *ngIf="passwordConfirmField.type === 'text'"> lock_open
+          </mat-icon>
+        </button>
+      </mat-form-field>
+
+      <!-- Errors -->
+      <div class="-mt-5 leading-4 text-md">
+        <mat-error class="-mt-1" *ngIf="signUpForm.controls.password.value && signUpForm.controls.confirmPassword.errors?.required">
+          {{ t('msg.validator.passwordConfirmationRequired') }}
+        </mat-error>
+        <mat-error class="-mt-1" *ngIf="signUpForm.get('confirmPassword').hasError('mustMatch')">
+          {{ t('msg.validator.matchingPasswordsRequired') }}
+        </mat-error>
+        <mat-error class="-mt-1" *ngIf="signUpForm.controls['password'].hasError('hasNumber')">
+          {{ t('msg.validator.passwordMustHaveNumber') }}
+        </mat-error>
+        <mat-error class="-mt-1" *ngIf="signUpForm.controls['password'].hasError('minlength')">
+          {{ t('msg.validator.passwordLength') }}
+        </mat-error>
+        <mat-error class="-mt-1" *ngIf="signUpForm.controls['password'].hasError('hasSmallCase')">
+          {{ t('msg.validator.passwordMustHaveSmallLetter') }}
+        </mat-error>
+        <mat-error class="-mt-1" *ngIf="signUpForm.controls['password'].hasError('hasSpecialCharacters')">
+          {{ t('msg.validator.passwordMustHaveSpecialCharacter') }}
+        </mat-error>
+        <mat-error class="-mt-1" *ngIf="signUpForm.controls['password'].hasError('hasCapitalCase')">
+          {{ t('msg.validator.passwordMustHaveCapitalLetter') }}
+        </mat-error>
+      </div>
+
+      <button (click)="signUp()" [ngClass]="{
+        'opacity-1': signUpForm.valid,
+        'opacity-50': signUpForm.invalid
+          }" [disabled]="signUpForm.invalid" class="bg-gradient-to-r from-orange-400/90 to-red-400/80 text-white p-4 mt-8 rounded-full w-full">
+        {{ t('lbl.button.checkIn') }}
+      </button>
+
+    </form>
+  </div>
+</div>

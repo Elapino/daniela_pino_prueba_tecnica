@@ -1,0 +1,109 @@
+{
+	"lbl": {
+		"auth": {
+			"user": "Username",
+			"signInText": "Sign In",
+			"signUp": "Sign Up",
+			"email": "E-mail",
+			"password": "Password",
+			"confirmPassword": "Confirm Password",
+			"welcome": "Welcome back to Template Project. We hope you have a great day!",
+			"signOut": "You have signed out!",
+			"redirect": "Redirecting in",
+			"redirected": "You are now being redirected!",
+			"go": "Go to",
+			"return": "Return to",
+			"rememberMe": "Remember me",
+			"signIn": "Sign In",
+			"forgotPassword": "Forgot Password",
+			"accept": "I accept",
+			"termsConditions": "the terms and conditions of use",
+			"policyPrivacy": "the privacy policy and data protection"
+		},
+		"tooltip": {
+			"delete": "Delete record",
+			"download": "Download record",
+			"edit": "Edit record",
+			"create": "Create",
+			"shoppingCar": "My shopping cart"
+		},
+		"modal": {
+			"createProduct": "Product Creation",
+			"editProduct": "Product Modification",
+			"productCreated": "The product was created successfully.",
+			"productEdited": "The product was modified successfully.",
+			"deleteProduct": "Product Deletion",
+			"confirmDeleteProduct": "Are you sure you want to delete the product?",
+			"successfulDeleteProduct": "The product was deleted successfully."
+		},
+		"product": {
+			"name": "Name",
+			"description": "Description",
+			"price": "Price",
+			"quantity": "Quantity",
+			"quantityAvailable": "Quantity Available",
+			"product": "Product",
+			"registerProduct": "Register product"
+		},
+		"shared": {
+			"actions": "Actions",
+			"filter": "Search Filter"
+		},
+		"button": {
+			"continue": "Continue",
+			"back": "Back",
+			"confirm": "Confirm",
+			"update": "Update",
+			"cancel": "Cancel",
+			"add": "Add",
+			"edit": "Edit",
+			"clean": "Clean",
+			"consult": "Consult",
+			"delete": "Delete",
+			"download": "Download",
+			"signIn": "Sign In",
+			"save": "Save",
+			"close": "Close",
+			"checkIn": "Check in"
+		}
+	},
+	"msg": {
+		"auth": {
+			"forgotPassword": "Forgot Password",
+			"message": "Forgot your password?",
+			"createPassword": "Create Password",
+			"message1": "Enter your email to reset your password",
+			"mailSent": "Password reset sent! You will receive an email if you are registered in our system.",
+			"mailNoExist": "Email not found! Are you sure you are already a member?",
+			"resetPassword": "Reset Your Password",
+			"newPassword": "Create a new password for your account",
+			"passwordCreated": "Your password has been created successfully!",
+			"successfulAction": "Action performed successfully",
+			"error": "Error performing the action",
+			"errorText": "Error!",
+			"error500": "Internal server error",
+			"error404": "Resource not found",
+			"errorService": "There was a problem performing the action",
+			"errorLogin": "Error! Incorrect username or password."
+		},
+		"validator": {
+			"userNameRequired": "Username is required",
+			"emailRequired": "Email is required",
+			"userNameValid": "A valid username is required",
+			"emailValid": "Enter a valid email",
+			"passwordRequired": "Password is required",
+			"passwordConfirmationRequired": "* Password verification is required",
+			"passwordMustHaveNumber": "* Password must contain at least one number",
+			"passwordMustHaveCapitalLetter": "* Password must have a capital letter",
+			"passwordLength": "* Password must be at least 8 characters long",
+			"passwordMustHaveSmallLetter": "* Password must have a lowercase letter",
+			"passwordMustHaveSpecialCharacter": "* Password must have a special character",
+			"matchingPasswordsRequired": "* Passwords must match",
+			"maxLength": "Maximum reached",
+			"minLength": "Minimum of 4 characters",
+			"min2Length": "Minimum of 2 characters",
+			"min1Length": "Minimum of 1 characters",
+			"fieldRequired": "The field is required"
+		}
+	}
+}

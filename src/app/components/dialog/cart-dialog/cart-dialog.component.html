@@ -1,0 +1,46 @@
+<mat-dialog-title *transloco="let t" class="flex bg-principal-0 w-full flex-wrap justify-center">
+    <div class="w-full flex py-4 px-2">
+        <span class="w-full flex justify-start text-red-400 leading-5 text-lg pl-3 font-bold">
+            {{ t('lbl.modal.car') }}
+        </span>
+    </div>
+    <mat-divider class="w-full"></mat-divider>
+</mat-dialog-title>
+
+<mat-dialog-content *transloco="let t" class="flex flex-col text-center bg-principal-0 w-full">
+
+    <div *ngIf="cartItems.length > 0; else emptyCart" class="mb-4">
+        <div *ngFor="let item of cartItems" class="flex justify-between py-2 border-b border-gray-200">
+            <div class="flex space-x-4">
+                <img [src]="item.imageUrl" alt="Product" class="w-12 h-12 object-cover rounded">
+                <div class="flex-wrap flex content-center">
+                    <span class="font-semibold px-2">{{ item.name }}</span>
+                    <span class="text-sm text-gray-500">{{ item.quantity }} x {{ item.price | currency }}</span>
+                </div>
+            </div>
+            <button mat-icon-button color="warn" (click)="removeItemFromCart(item)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+    </div>
+</mat-dialog-content>
+
+
+<mat-dialog-actions *transloco="let t" class="flex bg-principal-0">
+    <div class="flex justify-center py-2 w-full text-center">
+        <span class="font-semibold">Total:</span>
+        <span>{{ getTotalPrice() | currency }}</span>
+    </div>
+
+    <div class="w-full text-center">
+        <button (click)="onCancel()"
+            class="bg-gradient-to-r from-orange-400/90 to-red-400/80 text-white p-2 m-2.5 rounded-full shadow-md w-30 min-w-26">
+            {{ t('lbl.button.cancel') }}
+        </button>
+
+        <button (click)="checkout()"
+            class="bg-gradient-to-r from-blue-400/90 to-green-400/80 text-white p-2 m-2.5 rounded-full shadow-md w-30 min-w-26">
+            {{ t('lbl.button.pay') }}
+        </button>
+    </div>
+</mat-dialog-actions>

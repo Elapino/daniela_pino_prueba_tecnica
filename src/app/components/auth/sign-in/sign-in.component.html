@@ -1,0 +1,50 @@
+<div *transloco="let t"
+  class="min-h-screen flex justify-center items-center bg-principal-0 sm:bg-gradient-to-r sm:from-orange-400/90 sm:to-red-400/80">
+
+  <div class="bg-principal-0 p-8 rounded-2xl sm:shadow-lg text-center w-full sm:w-100 relative">
+    <img src="./assets/image/icon/profile.PNG" alt="Preview"
+      class="absolute rounded-full top-0 left-0 right-0 mx-auto -mt-16 w-32">
+
+    <form class="mt-14" [formGroup]="signInForm" #signInNgForm="ngForm">
+      <span class="text-red-400 text-3xl font-bold">{{ t('lbl.auth.signInText') }}</span>
+
+      <!-- Email field -->
+      <mat-form-field class="w-full mt-6">
+        <mat-label>{{ t('lbl.auth.user') }}</mat-label>
+        <input matInput formControlName="email" id="email">
+        <mat-icon matPrefix class="text-red-400 icon-size-5">person</mat-icon>
+        <mat-error *ngIf="signInForm.get('email').hasError('required')">
+          {{ t('msg.validator.fieldRequired') }}
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Password field -->
+      <mat-form-field class="w-full mt-1">
+        <mat-label>{{ t('lbl.auth.password') }}</mat-label>
+        <input id="password" matInput type="password" [formControlName]="'password'" #passwordField>
+        <button mat-icon-button type="button"
+          (click)="passwordField.type === 'password' ? passwordField.type = 'text' : passwordField.type = 'password'"
+          matPrefix>
+          <mat-icon class="text-red-400 icon-size-5" *ngIf="passwordField.type === 'password'"> lock </mat-icon>
+          <mat-icon class="text-red-400 icon-size-5" *ngIf="passwordField.type === 'text'"> lock_open </mat-icon>
+        </button>
+        <mat-error class="mb-1">
+          {{ t('msg.validator.fieldRequired') }}
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Actions -->
+      <div class="inline-flex items-center justify-between w-full">
+        <mat-checkbox class="-ml-2" [formControlName]="'rememberMe'">
+          <span class="hover:underline text-base">{{ t('lbl.auth.rememberMe') }}</span>
+        </mat-checkbox>
+      </div>
+
+      <button (click)="signIn()" [ngClass]="{
+        'opacity-1': signInForm.valid,
+        'opacity-50': signInForm.invalid
+         }" [disabled]="signInForm.invalid" class="bg-gradient-to-r from-orange-400/90 to-red-400/80 text-white p-4 mt-4 rounded-full w-full">
+        {{ t('lbl.button.signIn') }}</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div *transloco="let t"
+  class="min-h-screen flex justify-center items-center bg-principal-0 sm:bg-gradient-to-r sm:from-orange-400/90 sm:to-red-400/80">
+
+  <div class="w-full sm:w-auto py-8 px-4 sm:p-12 sm:rounded-2xl sm:shadow sm:bg-principal-0">
+    <div class="w-full max-w-100 sm:w-100 mx-auto sm:mx-0">
+
+      <!-- Title -->
+      <div class="text-5xl font-extrabold tracking-tight leading-tight text-center text-red-400">{{
+        t('lbl.auth.signOut') }}
+      </div>
+      <div class="flex text-lg justify-center mt-1 font-medium">
+        <!-- Redirect countdown -->
+        <ng-container *ngIf="countdown > 0">
+          <span class="text-principal-100">
+            {{ t('lbl.auth.redirect') }} {{ countdown | i18nPlural: countdownMapping }}
+          </span>
+        </ng-container>
+
+        <!-- Redirect message -->
+        <ng-container *ngIf="countdown === 0">
+          <span class="text-principal-100"> {{ t('lbl.auth.redirected') }} </span>
+        </ng-container>
+      </div>
+
+      <!-- Form footer -->
+      <div class="mt-8 text-xl font-medium text-center">
+        <span class="text-principal-100"> {{ t('lbl.auth.go') }} </span>
+        <a class="ml-1 font-bold text-red-400 hover:underline" [routerLink]="['/sign-in']">{{ t('lbl.auth.signIn')
+          }}
+        </a>
+
+      </div>
+    </div>
+  </div>
+</div>

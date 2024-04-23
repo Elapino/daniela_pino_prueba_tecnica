@@ -1,0 +1,112 @@
+<div *transloco="let t"
+  class="border-2 flex bg-principal-0 flex-wrap w-full min-w-0 relative justify-center rounded-md shadow-md">
+
+  <!-- title -->
+  <div class="w-full flex flex-wrap justify-center">
+
+    <div class="w-full py-1 flex flex-wrap">
+      <span
+        class="w-full sm:w-1/2 flex self-center justify-start text-red-400 leading-5 text-2xl pl-5 pb-1 font-bold pt-2">
+        {{ t(config.title) }}
+      </span>
+
+      <div *ngIf="config.buttons" class="w-full sm:w-1/2 flex px-4 my-2 items-center sm:justify-end">
+        <div *ngFor="let item of config.buttons" class="sm:px-2">
+          <button *ngIf="!item.position || item.position != 'down'"
+            [ngClass]="item.class ?? 'bg-gradient-to-r from-orange-400/90 to-red-400 min-w-30'"
+            class="items-center mr-3 sm:mr-0 shadow-md rounded-2xl min-h-7 h-auto max-h-9 px-4 flex flex-row-reverse"
+            (click)="item.onClick(config.selectable ? selection.selected : null)">
+            <mat-icon *ngIf="item.icon" class="icon-size-6 pl-0.5 text-principal-0">{{item.icon}}</mat-icon>
+            <div class="flex w-full justify-center">
+              <span class="text-principal-0 leading-4 flex p-2 text-base">{{ t(item.title) }}</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+    </div>
+    <mat-divider class="w-full"></mat-divider>
+  </div>
+
+  <!-- table -->
+  <div class="overflow-x-scroll w-full pt-2">
+
+    <mat-table [dataSource]="dataSource">
+
+      <ng-container *ngIf="config.selectable" matColumnDef="select">
+        <div mat-header-cell *matHeaderCellDef>
+          <mat-checkbox class="custom-checkbox ml-4" (change)="$event ? masterToggle() : null" [checked]="selectedAll"
+            [indeterminate]="!selectedAll && selection.hasValue()">
+          </mat-checkbox>
+        </div>
+        <div mat-cell *matCellDef="let element">
+          <mat-checkbox class="custom-checkbox ml-4" (click)="$event.stopPropagation()"
+            (change)="$event ? selectRow(element) : null" [checked]="isSelected(element)">
+          </mat-checkbox>
+        </div>
+      </ng-container>
+
+      <ng-container *ngFor="let field of config.fields">
+        <ng-container *ngIf="!field.hidden" [matColumnDef]="field.title">
+          <!-- Encabezado de la columna -->
+          <mat-header-cell *matHeaderCellDef [ngClass]="field.size ?? 'min-w-30'"
+            class="text-red-400 pb-2 w-full text-base text-center place-content-center">
+            <span class="leading-4">{{ t(field.title) }}</span>
+          </mat-header-cell>
+
+          <!-- Celda de datos en la columna -->
+          <mat-cell *matCellDef="let element" [ngClass]="field.size ?? 'min-w-30'"
+            class="w-full text-md text-center place-content-center leading-5">
+            {{ field.isDate ? (element[field.field] | date: 'dd-MM-yyyy HH:mm') : element[field.field] }}
+          </mat-cell>
+        </ng-container>
+      </ng-container>
+
+
+      <ng-container *ngIf="config.actions" [matColumnDef]="'actions'" stickyEnd>
+        <!-- Encabezado de la columna -->
+        <mat-header-cell *matHeaderCellDef [ngClass]="config.actionsSize ?? 'min-w-30'"
+          class="text-red-400 pb-2 text-base text-center place-content-center">
+          <span>{{ t('lbl.shared.actions') }}</span>
+        </mat-header-cell>
+
+        <!-- Celda de datos en la columna -->
+        <mat-cell *matCellDef="let element" [ngClass]="config.actionsSize ?? 'min-w-30'"
+          class="pb-2 text-md text-center z-40 place-content-center">
+          <div *ngFor="let action of config.actions" class="flex items-center py-1" [matTooltip]="t(action.tooltip)"
+            matTooltipPosition="above">
+            <div [ngClass]="action.color || 'bg-gradient-to-r from-orange-400/90 to-red-400'"
+              class="w-8 h-8 mx-0.5 flex items-center justify-center shadow-md rounded-full cursor-pointer"
+              (click)="action.onClick(element)">
+              <mat-icon *ngIf="action.icon" class="icon-size-6 text-principal-0">{{action.icon}}</mat-icon>
+            </div>
+          </div>
+        </mat-cell>
+      </ng-container>
+
+      <!-- Definición de las filas de encabezado y datos -->
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; let even = even; let odd = odd; columns: displayedColumns;"
+        [ngClass]="{ 'bg-principal-400': even, 'bg-principal-0': odd }"></mat-row>
+    </mat-table>
+  </div>
+
+  <!-- Paginador -->
+  <mat-paginator #paginator class="flex justify-start w-full" [length]="total" [pageIndex]="pageNumber"
+    *ngIf="!config.notPaginator" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" showFirstLastButtons
+    (page)="loadPage($event)">
+  </mat-paginator>
+
+  <div *ngIf="config.buttons" class="w-full flex px-3 sm:-mt-2 md:-mt-4 items-center sm:justify-end">
+    <div *ngFor="let item of config.buttons" class="sm:px-2">
+      <button *ngIf="item.position || item.position == 'down'" [ngClass]="item.class ?? 'bg-gradient-to-r from-orange-400/90 to-red-400 min-w-30'"
+        class="items-center mb-5 mr-3 sm:mr-0 shadow-md rounded-2xl min-h-8 h-auto max-h-9 px-4 flex flex-row-reverse"
+        (click)="item.onClick(config.selectable ? selection.selected : null)">
+        <mat-icon *ngIf="item.icon" class="icon-size-6 pl-0.5 text-principal-0">{{item.icon}}</mat-icon>
+        <div class="flex w-full justify-center">
+          <span class="text-principal-0 leading-4 flex p-2 text-base">{{ t(item.title) }}</span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>

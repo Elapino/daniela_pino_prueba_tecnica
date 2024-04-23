@@ -1,0 +1,59 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+/* Boton con borde */
+.borderBtn {
+    display: block;
+    background-color: white;
+    border: 1px solid rgb(239 68 68 / var(--tw-bg-opacity)) !important;
+
+    .backIcon {
+        color: rgb(239 68 68 / var(--tw-bg-opacity));
+        font-size: 15px;
+    }
+}
+
+.borderBtn:hover {
+    background-image: linear-gradient(to right, rgba(255, 132, 0, 0.616), rgba(239, 68, 68, 0.559)) !important;
+    border: none !important;
+}
+
+
+/* checkbox */
+.mdc-checkbox .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate=true])~.mdc-checkbox__background {
+    border-width: 2px;
+    border-color: #65B338 !important;
+}
+
+.mdc-checkbox .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background,
+.mdc-checkbox .mdc-checkbox__native-control:enabled:indeterminate~.mdc-checkbox__background,
+.mdc-checkbox .mdc-checkbox__native-control[data-indeterminate=true]:enabled~.mdc-checkbox__background {
+    border-color: #65B338 !important;
+    background-color: #65B338 !important;
+}
+
+@media (max-width: 400px) {
+    .mat-dialog-container {
+      max-width: 87%;
+    }
+  }
+  
+  @media (min-width: 401px) {
+    .mat-dialog-container {
+      max-width: 40%;
+    }
+  }
+  
