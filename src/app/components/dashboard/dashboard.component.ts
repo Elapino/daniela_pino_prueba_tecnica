@@ -102,7 +102,6 @@ export class DashboardComponent implements OnInit {
     private _translocoService: TranslocoService,
     private _productService: ProductService,
     private _mealService: MealService,
-    private _userService: UserService,
     private _matDialog: MatDialog,
     private _router: Router
   ) { }
@@ -110,7 +109,11 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.getMeals();
     this.getProducts();
-    this.user = this._userService.getUser();
+    this.user = {
+      username: 'Daniela Pino',
+      rol: "Administrador",
+      email: "admin@gmail.com",
+    };
     this.params = { pageNumber: 0 };
     this.getData();
   }

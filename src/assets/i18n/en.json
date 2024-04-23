@@ -1,49 +1,57 @@
 {
 	"lbl": {
 		"auth": {
-			"user": "Username",
+			"admin": "Administrator",
+			"user": "User",
 			"signInText": "Sign In",
-			"signUp": "Sign Up",
+			"signUpText": "Sign Up",
+			"signUp": "User Registration",
 			"email": "E-mail",
-			"password": "Password",
 			"confirmPassword": "Confirm Password",
-			"welcome": "Welcome back to Template Project. We hope you have a great day!",
+			"password": "Password",
 			"signOut": "You have signed out!",
 			"redirect": "Redirecting in",
 			"redirected": "You are now being redirected!",
-			"go": "Go to",
-			"return": "Return to",
-			"rememberMe": "Remember me",
-			"signIn": "Sign In",
 			"forgotPassword": "Forgot Password",
-			"accept": "I accept",
-			"termsConditions": "the terms and conditions of use",
-			"policyPrivacy": "the privacy policy and data protection"
+			"rememberMe": "Remember Me",
+			"return": "Return to",
+			"signIn": "Sign In",
+			"accept": "Accept",
+			"go": "Go to",
+			"message": "Frontend mockup designed with Angular 17 and Tailwind by Daniela Pino. At this stage, the application has no connections to backend services. This has been intentionally done to focus on evaluating the frontend part.",
+			"policyPrivacy": "privacy policy and data protection"
 		},
 		"tooltip": {
-			"delete": "Delete record",
-			"download": "Download record",
-			"edit": "Edit record",
+			"delete": "Delete Record",
+			"download": "Download Record",
+			"edit": "Edit Record",
+			"signOut": "Sign Out",
 			"create": "Create",
-			"shoppingCar": "My shopping cart"
+			"shoppingCar": "My Shopping Cart"
 		},
 		"modal": {
-			"createProduct": "Product Creation",
-			"editProduct": "Product Modification",
-			"productCreated": "The product was created successfully.",
-			"productEdited": "The product was modified successfully.",
-			"deleteProduct": "Product Deletion",
+			"addToCar": "Add to Cart",
+			"car": "Shopping Cart",
+			"addToCarText": "Select the quantity of the product you want to add to the cart",
+			"createProduct": "Create Product",
+			"editProduct": "Edit Product",
+			"productCreated": "Product created successfully.",
+			"productEdited": "Product edited successfully.",
+			"deleteProduct": "Delete Product",
 			"confirmDeleteProduct": "Are you sure you want to delete the product?",
-			"successfulDeleteProduct": "The product was deleted successfully."
+			"successfulDeleteProduct": "Product deleted successfully."
 		},
 		"product": {
 			"name": "Name",
 			"description": "Description",
 			"price": "Price",
 			"quantity": "Quantity",
-			"quantityAvailable": "Quantity Available",
-			"product": "Product",
-			"registerProduct": "Register product"
+			"quantityAvailable": "Available Quantity",
+			"meal": "Discover Meals of Interest for Your Business!",
+			"productText": "Discover Products of Interest for Your Business!",
+			"mealText": "A free API has been implemented to provide you with even more options.",
+			"product": "Products",
+			"registerProduct": "Register Product"
 		},
 		"shared": {
 			"actions": "Actions",
@@ -57,14 +65,15 @@
 			"cancel": "Cancel",
 			"add": "Add",
 			"edit": "Edit",
-			"clean": "Clean",
+			"clean": "Clear",
 			"consult": "Consult",
 			"delete": "Delete",
 			"download": "Download",
 			"signIn": "Sign In",
 			"save": "Save",
+			"pay": "Pay",
 			"close": "Close",
-			"checkIn": "Check in"
+			"checkIn": "Check In"
 		}
 	},
 	"msg": {
@@ -77,24 +86,24 @@
 			"mailNoExist": "Email not found! Are you sure you are already a member?",
 			"resetPassword": "Reset Your Password",
 			"newPassword": "Create a new password for your account",
-			"passwordCreated": "Your password has been created successfully!",
-			"successfulAction": "Action performed successfully",
-			"error": "Error performing the action",
+			"passwordCreated": "Your password has been successfully created!",
+			"successfulAction": "Action completed successfully",
+			"error": "Error performing action",
 			"errorText": "Error!",
-			"error500": "Internal server error",
-			"error404": "Resource not found",
+			"error500": "Internal Server Error",
+			"error404": "Resource Not Found",
 			"errorService": "There was a problem performing the action",
-			"errorLogin": "Error! Incorrect username or password."
+			"errorLogin": "Error! incorrect user or password."
 		},
 		"validator": {
 			"userNameRequired": "Username is required",
 			"emailRequired": "Email is required",
-			"userNameValid": "A valid username is required",
+			"userNameValid": "A valid username must be entered",
 			"emailValid": "Enter a valid email",
 			"passwordRequired": "Password is required",
-			"passwordConfirmationRequired": "* Password verification is required",
+			"passwordConfirmationRequired": "* Verify password is required",
 			"passwordMustHaveNumber": "* Password must contain at least one number",
-			"passwordMustHaveCapitalLetter": "* Password must have a capital letter",
+			"passwordMustHaveCapitalLetter": "* Password must have an uppercase letter",
 			"passwordLength": "* Password must be at least 8 characters long",
 			"passwordMustHaveSmallLetter": "* Password must have a lowercase letter",
 			"passwordMustHaveSpecialCharacter": "* Password must have a special character",
@@ -102,8 +111,8 @@
 			"maxLength": "Maximum reached",
 			"minLength": "Minimum of 4 characters",
 			"min2Length": "Minimum of 2 characters",
-			"min1Length": "Minimum of 1 characters",
-			"fieldRequired": "The field is required"
+			"min1Length": "Minimum of 1 character",
+			"fieldRequired": "Field is required"
 		}
 	}
 }

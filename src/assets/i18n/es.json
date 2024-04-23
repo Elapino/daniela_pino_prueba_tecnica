@@ -18,7 +18,7 @@
 			"signIn": "ingreso",
 			"accept": "Acepto",
 			"go": "Ir a",
-			"message": "Maquetado diseñado con Angular 17 y Tailwind por Daniela Pino. En esta etapa, el aplicativo no tiene conexiones a servicios. Se ha realizado de manera intencional para centrarse en la evaluación de la parte del frontend",
+			"message": "Maquetado diseñado con Angular 17 y Tailwind por Daniela Pino. En esta etapa, el aplicativo no tiene conexiones a servicios para centrarse en la evaluación solo de la parte del frontend",
 			"policyPrivacy": "la política de privacidad y protección de datos"
 		},
 		"tooltip": {
