@@ -1,23 +1,86 @@
 <mat-dialog-title *transloco="let t" class="flex bg-principal-0 w-full flex-wrap justify-center">
   <div class="w-full flex py-4 px-2">
-      <span class="w-full flex justify-start text-red-400 leading-5 text-lg pl-3 font-bold">
-        {{ data.message }}
-      </span>
+    <span class="w-full flex justify-start text-red-400 leading-5 text-lg pl-3 font-bold">
+      {{ data.message }}
+    </span>
   </div>
   <mat-divider class="w-full"></mat-divider>
 </mat-dialog-title>
 
+<mat-dialog-content *transloco="let t" class="flex flex-col items-center bg-principal-0 w-full">
+  <form class="mt-2" [formGroup]="productForm" #productNgForm="ngForm">
+    <mat-form-field class="w-full">
+      <mat-label>{{ t('lbl.product.name') }}</mat-label>
+      <input  maxlength="61" matInput formControlName="name" id="name">
+      <mat-icon matPrefix class="text-red-400 icon-size-5">person</mat-icon>
+      <mat-error class="-mt-1" *ngIf="productForm.get('name').hasError('required')">
+        {{ t('msg.validator.fieldRequired') }}
+      </mat-error>
+      <mat-error class="-mt-1" *ngIf="productForm.get('name').hasError('maxlength')">
+        {{ t('msg.validator.maxLength') }}
+      </mat-error>
+      <mat-error class="-mt-1" *ngIf="productForm.get('name').hasError('minlength')">
+        {{ t('msg.validator.min2Length') }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-full">
+      <mat-label>{{ t('lbl.product.description') }}</mat-label>
+      <input  maxlength="61" matInput formControlName="description" id="description">
+      <mat-icon matPrefix class="text-red-400 icon-size-5">description</mat-icon>
+      <mat-error class="-mt-1" *ngIf="productForm.get('description').hasError('required')">
+        {{ t('msg.validator.fieldRequired') }}
+      </mat-error>
+      <mat-error class="-mt-1" *ngIf="productForm.get('description').hasError('maxlength')">
+        {{ t('msg.validator.maxLength') }}
+      </mat-error>
+      <mat-error class="-mt-1" *ngIf="productForm.get('description').hasError('minlength')">
+        {{ t('msg.validator.min2Length') }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-full">
+      <mat-label>{{ t('lbl.product.price') }}</mat-label>
+      <input  maxlength="61" matInput type="number" formControlName="price" id="price" (keypress)="onKeyPress($event)"
+        (input)="onInput($event)">
+      <mat-icon matPrefix class="text-red-400 icon-size-5">attach_money</mat-icon>
+      <mat-error class="-mt-1" *ngIf="productForm.get('price').hasError('required')">
+        {{ t('msg.validator.fieldRequired') }}
+      </mat-error>
+      <mat-error class="-mt-1" *ngIf="productForm.get('price').hasError('maxlength')">
+        {{ t('msg.validator.maxLength') }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-full">
+      <mat-label>{{ t('lbl.product.quantity') }}</mat-label>
+      <input matInput type="number" formControlName="quantity" id="quantity" (keypress)="onKeyPress($event)"
+        (input)="onInput($event)">
+      <mat-icon matPrefix class="text-red-400 icon-size-5">inventory</mat-icon>
+      <mat-error class="-mt-1" *ngIf="productForm.get('quantity').hasError('required')">
+        {{ t('msg.validator.fieldRequired') }}
+      </mat-error>
+      <mat-error class="-mt-1" *ngIf="productForm.get('quantity').hasError('maxlength')">
+        {{ t('msg.validator.maxLength') }}
+      </mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+
 <mat-dialog-actions *transloco="let t" class="flex bg-principal-0">
-  <div [ngClass]="{'justify-center flex': !data.cancelOption }" class="w-full">
-    <button [ngClass]="{'hidden': !data.cancelOption }" (click)="onCancelClick()"
-      class="bg-gradient-to-r from-orange-400/90 to-red-400/80 text-white p-2 m-2.5 rounded-full shadow-md w-30 min-w-26">
+  <div class="w-full">
+    <button (click)="onCancelClick()"
+      class="bg-gradient-to-r from-orange-400/90 to-red-400/80 text-white p-2 m-2.5 rounded-full shadow-md w-30 min-w-26 mt-0">
       {{ t('lbl.button.cancel') }}
     </button>
-  
-    <button *ngIf="data?.acceptOption" (click)="onAcceptClick()"
-      class="bg-gradient-to-r from-blue-400/90 to-green-400/80 text-white p-2 m-2.5 rounded-full shadow-md w-30 min-w-26">
+
+    <button *ngIf="data?.acceptOption" (click)="onAcceptClick()" [ngClass]="{
+      'opacity-1': productForm.valid,
+      'opacity-50': productForm.invalid
+       }" [disabled]="productForm.invalid"
+      class="bg-gradient-to-r from-blue-400/90 to-green-400/80 text-white p-2 m-2.5 rounded-full shadow-md w-30 min-w-26 mt-0">
       {{ data.acceptOption }}
     </button>
-
   </div>
 </mat-dialog-actions>

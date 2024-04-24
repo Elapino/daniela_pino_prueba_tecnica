@@ -13,7 +13,7 @@ import { Product } from 'app/models/product.model';
 import { SharedCardComponent } from 'app/shared/shared-layout/shared-card/shared-card.component';
 import { Card } from 'app/models/card.model';
 import { GenericDialogComponent } from '../dialog/generic-dialog/generic-dialog.component';
-import { Modal } from 'app/models/modal.model';
+import { Modal, ProductModal } from 'app/models/modal.model';
 import { ProductDialogComponent } from '../dialog/product-dialog/product-dialog.component';
 @Component({
   selector: 'app-dashboard',
@@ -30,11 +30,13 @@ export class DashboardComponent implements OnInit {
     class: 'min-w-64 min-h-120 max-h-20 pb-4 mx-3',
     onClick: false
   };
+
   configCardMeal: Card = {
     class: 'min-w-32 min-h-44 max-h-44',
     textClass: 'font-bold text-base leading-4',
     onClick: false
   };
+
   configComponentTable: Table = {
     lazy: true,
     onChange: (...params) => this.getData(params),
@@ -94,7 +96,6 @@ export class DashboardComponent implements OnInit {
   meals: any[] = [];
   params: any;
   user: User;
-
 
   constructor(
     private _translocoService: TranslocoService,
@@ -180,12 +181,11 @@ export class DashboardComponent implements OnInit {
   }
 
   /* Product options */
-  editProduct(user: User): void {
-    const confirmDeleteModal: Modal = {
+  editProduct(product: Product): void {
+    const confirmDeleteModal: ProductModal = {
       message: 'Editar producto',
-      success: false,
-      acceptOption: 'Aceptar',
-      cancelOption: true
+      acceptOption: 'Editar',
+      content: product
     };
 
     this._matDialog
@@ -209,11 +209,10 @@ export class DashboardComponent implements OnInit {
   }
 
   registerProduct(): void {
-    const confirmDeleteModal: Modal = {
+    const confirmDeleteModal: ProductModal = {
       message: 'Crear producto',
-      success: false,
-      acceptOption: 'Aceptar',
-      cancelOption: true
+      acceptOption: 'Crear',
+      content: null
     };
 
     this._matDialog
@@ -262,7 +261,6 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
-
 
   signOut(): void {
     this._router.navigateByUrl('/sign-out');
