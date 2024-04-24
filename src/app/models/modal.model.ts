@@ -1,5 +1,6 @@
 export interface Modal {
     message: string;
+    success: boolean;
     acceptOption: string;
-    cancelOption: string;
+    cancelOption: boolean;
 }  

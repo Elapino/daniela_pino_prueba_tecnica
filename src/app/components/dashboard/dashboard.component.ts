@@ -7,8 +7,6 @@ import { Router } from '@angular/router';
 import { TranslocoService } from '@ngneat/transloco';
 import { User } from 'app/models/user.model';
 import { MatDialog } from '@angular/material/dialog';
-import { ProductDialogComponent } from '../dialog/product-dialog/product-dialog.component';
-import { UserService } from 'app/services/user.service';
 import { MealService } from 'app/services/meal.service';
 import { ProductService } from 'app/services/product.service';
 import { Product } from 'app/models/product.model';
@@ -16,6 +14,7 @@ import { SharedCardComponent } from 'app/shared/shared-layout/shared-card/shared
 import { Card } from 'app/models/card.model';
 import { GenericDialogComponent } from '../dialog/generic-dialog/generic-dialog.component';
 import { Modal } from 'app/models/modal.model';
+import { ProductDialogComponent } from '../dialog/product-dialog/product-dialog.component';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -23,7 +22,6 @@ import { Modal } from 'app/models/modal.model';
     SharedModule,
     SharedTableComponent,
     SharedCardComponent,
-    ProductDialogComponent,
   ],
   templateUrl: './dashboard.component.html',
 })
@@ -74,14 +72,14 @@ export class DashboardComponent implements OnInit {
         icon: 'delete',
         color: 'bg-gradient-to-r from-orange-400/90 to-red-400',
         tooltip: 'lbl.tooltip.delete',
-        onClick: (value) => this.registerProduct(),
+        onClick: (value) => this.deleteProduct(),
       },
     ],
     buttons: [
       {
         title: 'lbl.product.registerProduct',
         icon: 'add',
-        onClick: (value) => this.getDocTypes(),
+        onClick: (value) => this.registerProduct(),
         class: 'bg-gradient-to-r from-orange-400/90 to-red-400',
       },
     ],
@@ -94,7 +92,7 @@ export class DashboardComponent implements OnInit {
   update: boolean = false;
   products: Product[];
   meals: any[] = [];
-  params: any;  
+  params: any;
   user: User;
 
 
@@ -143,9 +141,6 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-
-  getDocTypes(): any { }
-
   /* Table filling service */
   getData(...params: any): void {
     const data = {
@@ -186,59 +181,88 @@ export class DashboardComponent implements OnInit {
 
   /* Product options */
   editProduct(user: User): void {
+    const confirmDeleteModal: Modal = {
+      message: 'Crear producto',
+      success: false,
+      acceptOption: 'Aceptar',
+      cancelOption: true
+    };
+
     this._matDialog
       .open(ProductDialogComponent, {
-        panelClass: ['custom-modalbox'],
-        data: {
-          title: 'lbl.modal.editProduct',
-          buttonLabel: 'lbl.button.edit',
-          product: user,
-        },
-      })
-      .afterClosed()
-      .subscribe((data) => {
-        if (data) {
-          this.params = { ...this.params, pageNumber: 0 };
-          this.getData();
+        width: '300px',
+        data: confirmDeleteModal
+      }).afterClosed().subscribe((confirmed) => {
+        if (confirmed) {
+          const successModal: Modal = {
+            message: 'Acción realizada con éxito',
+            success: true,
+            acceptOption: 'Aceptar',
+            cancelOption: false
+          };
+          this._matDialog.open(GenericDialogComponent, {
+            width: '300px',
+            data: successModal
+          });
         }
       });
   }
 
   registerProduct(): void {
+    const confirmDeleteModal: Modal = {
+      message: 'Editar producto',
+      success: false,
+      acceptOption: 'Aceptar',
+      cancelOption: true
+    };
+
     this._matDialog
       .open(ProductDialogComponent, {
-        panelClass: ['custom-modalbox'],
-        data: {
-          title: 'lbl.modal.createProduct',
-          buttonLabel: 'lbl.button.save',
-        },
-      })
-      .afterClosed()
-      .subscribe((data) => {
-        if (data) {
-          this.params = { ...this.params, pageNumber: 0 };
-          this.getData();
+        width: '300px',
+        data: confirmDeleteModal
+      }).afterClosed().subscribe((confirmed) => {
+        if (confirmed) {
+          const successModal: Modal = {
+            message: 'Acción realizada con éxito',
+            success: true,
+            acceptOption: 'Aceptar',
+            cancelOption: false
+          };
+          this._matDialog.open(GenericDialogComponent, {
+            width: '300px',
+            data: successModal
+          });
         }
       });
   }
 
   deleteProduct(): void {
-    const modalData: Modal = {
-      message: '¿Seguro que quiere eliminar producto?',
+    const confirmDeleteModal: Modal = {
+      message: '¿Seguro que quiere eliminar el producto?',
+      success: false,
       acceptOption: 'Aceptar',
-      cancelOption: 'Cancelar'
+      cancelOption: true
     };
+
     this._matDialog.open(GenericDialogComponent, {
       width: '300px',
-      data: modalData
-    }).afterClosed()
-      .subscribe((data) => {
-        if (data) {
-          this.params = { ...this.params, pageNumber: 0 };
-          this.getData();
-        }
-      });
+      data: confirmDeleteModal
+    }).afterClosed().subscribe((confirmed) => {
+      if (confirmed) {
+        const successModal: Modal = {
+          message: 'Acción realizada con éxito',
+          success: true,
+          acceptOption: 'Aceptar',
+          cancelOption: false
+        };
+        this._matDialog.open(GenericDialogComponent, {
+          width: '300px',
+          data: successModal
+        });
+      }
+    });
   }
+
 
   signOut(): void {
     this._router.navigateByUrl('/sign-out');

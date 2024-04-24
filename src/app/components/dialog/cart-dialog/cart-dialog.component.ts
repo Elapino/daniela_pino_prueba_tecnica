@@ -29,14 +29,29 @@ export class CartDialogComponent {
   ) { }
 
   removeItemFromCart(item: Product): void {
-    const modalData: Modal = {
-      message: '¡Se ha eliminado con exito!',
+    const confirmDeleteModal: Modal = {
+      message: '¿Seguro que quiere eliminar el producto?',
+      success: false,
       acceptOption: 'Aceptar',
-      cancelOption: 'Cancelar'
+      cancelOption: true
     };
+
     this.dialog.open(GenericDialogComponent, {
       width: '300px',
-      data: modalData
+      data: confirmDeleteModal
+    }).afterClosed().subscribe((confirmed) => {
+      if (confirmed) {
+        const successModal: Modal = {
+          message: 'Acción realizada con éxito',
+          success: true,
+          acceptOption: 'Aceptar',
+          cancelOption: false
+        };
+        this.dialog.open(GenericDialogComponent, {
+          width: '300px',
+          data: successModal
+        });
+      }
     });
   }
 
@@ -48,8 +63,9 @@ export class CartDialogComponent {
     this.dialogRef.close();
     const modalData: Modal = {
       message: '¡Proceso de pago iniciado!',
+      success: true,
       acceptOption: 'Aceptar',
-      cancelOption: 'Cancelar'
+      cancelOption: false
     };
     this.dialog.open(GenericDialogComponent, {
       width: '300px',

@@ -19,4 +19,8 @@ export class GenericDialogComponent {
   onAcceptClick(): void {
     this.dialogRef.close(true);
   }
+
+  onCancelClick(): void {
+    this.dialogRef.close(false);
+  }
 }

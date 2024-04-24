@@ -24,8 +24,9 @@ export class AddToCartDialogComponent {
 
     const modalData: Modal = {
       message: '¡Se ha añadido con exito!',
+      success: true,
       acceptOption: 'Aceptar',
-      cancelOption: 'Cancelar'
+      cancelOption: false
     };
 
     this.dialog.open(GenericDialogComponent, {
