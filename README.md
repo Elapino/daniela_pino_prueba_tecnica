@@ -1,7 +1,7 @@
 
 # Proyecto de Mercado Online
 
-Este proyecto es una plataforma de mercado online desarollada por DANIELA ZUÑIGA PINO en la cual los usuarios pueden explorar una variedad de productos que incluyen frutas, verduras, y comidas. Además, ofrece funcionalidades de autenticación, gestión de carrito de compras, y administración de productos, esta generado con **[Angular CLI](https://github.com/angular/angular-cli) version 17.3.4.** 
+Este proyecto es una plataforma de mercado online desarrollada por DANIELA ZUÑIGA PINO en la cual los usuarios pueden explorar una variedad de productos que incluyen frutas, verduras, y comidas. Además, ofrece funcionalidades de autenticación, gestión de carrito de compras, y administración de productos, esta generado con **[Angular CLI](https://github.com/angular/angular-cli) version 17.3.4.** 
 
 
 ## Development server
