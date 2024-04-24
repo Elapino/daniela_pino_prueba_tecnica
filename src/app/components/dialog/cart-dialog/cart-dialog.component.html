@@ -23,22 +23,33 @@
             </button>
         </div>
     </div>
+
+    <ng-template #emptyCart>
+        <div class="text-center p-4">
+            <p>{{ t('lbl.product.emptyCartMessage') }}</p>
+        </div>
+    </ng-template>
 </mat-dialog-content>
 
 
 <mat-dialog-actions *transloco="let t" class="flex bg-principal-0">
     <div class="flex justify-center py-2 w-full text-center">
-        <span class="font-semibold">Total:</span>
-        <span>{{ getTotalPrice() | currency }}</span>
+        <span class="font-semibold">
+            {{ t('lbl.button.total') }} 
+        </span>
+        <span class="px-1"> {{ getTotalPrice() | currency }}</span>
     </div>
 
     <div class="w-full text-center">
         <button (click)="onCancel()"
-            class="bg-gradient-to-r from-orange-400/90 to-red-400/80 text-white p-2 m-2.5 rounded-full shadow-md w-30 min-w-26">
+            class="bg-gradient-to-r from-orange-400/90 to-red-400/80 text-white p-2 mx-2.5 sm:m-2.5 rounded-full shadow-md w-30 min-w-26">
             {{ t('lbl.button.cancel') }}
         </button>
 
-        <button (click)="checkout()"
+        <button (click)="checkout(cartItems)" [ngClass]="{
+            'opacity-1': cartItems.length > 0,
+            'opacity-50': !cartItems.length > 0
+             }" [disabled]="!cartItems.length > 0"
             class="bg-gradient-to-r from-blue-400/90 to-green-400/80 text-white p-2 m-2.5 rounded-full shadow-md w-30 min-w-26">
             {{ t('lbl.button.pay') }}
         </button>

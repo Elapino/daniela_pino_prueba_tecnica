@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Modal } from 'app/models/modal.model';
 import { SharedModule } from 'app/shared/shared.module';
 import { GenericDialogComponent } from '../generic-dialog/generic-dialog.component';
+import { CartDialogComponent } from '../cart-dialog/cart-dialog.component';
 
 
 @Component({
@@ -21,7 +22,6 @@ export class AddToCartDialogComponent {
 
   onAddToCart(): void {
     this.dialogRef.close();
-
     const modalData: Modal = {
       message: '¡Se ha añadido con exito!',
       success: true,
@@ -32,6 +32,10 @@ export class AddToCartDialogComponent {
     this.dialog.open(GenericDialogComponent, {
       width: '300px',
       data: modalData
+    }).afterClosed().subscribe((confirmed) => {
+      if (confirmed) {
+        this.dialog.open(CartDialogComponent);
+      }
     });
   }
 
