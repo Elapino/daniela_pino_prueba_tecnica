@@ -5,6 +5,7 @@ import { User } from 'app/models/user.model';
 import { SharedModule } from 'app/shared/shared.module';
 import { CommonModule } from '@angular/common';
 import { UserService } from 'app/services/user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-sign-in',
@@ -22,11 +23,14 @@ export class SignInComponent implements OnInit {
     private _activatedRoute: ActivatedRoute,
     private _userService: UserService,
     private _formBuilder: FormBuilder,
+    private _snackBar: MatSnackBar,
     private _router: Router,
   ) { }
 
 
   ngOnInit(): void {
+    this.openSnackBar('¡Bienvenido! Ten en cuenta que la funcionalidad de inicio de sesión se ha implementado para acceder al módulo administrativo. Los datos que visualizas son simulados y no hay un backend real detrás, ya que este es un prototipo de frontend para pruebas. ¡Disfruta explorando el sistema!');
+
     this.signInForm = this._formBuilder.group({
       email: ['admin@gmail.com',
         [
@@ -63,5 +67,17 @@ export class SignInComponent implements OnInit {
     }
     this._userService.saveUser(user);
     this._router.navigateByUrl('/dashboard');
+  }
+
+  openSnackBar(message: string): void {
+    this._snackBar.open(
+      message,
+      'Entendido',
+      {
+        duration: 12000,
+        horizontalPosition: 'right',
+        verticalPosition: 'top',
+      }
+    );
   }
 }

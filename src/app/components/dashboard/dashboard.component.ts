@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
   };
 
   configCardMeal: Card = {
-    class: 'min-w-32 min-h-44 max-h-44',
+    class: 'min-w-40 mx-3 min-h-44 max-h-44',
     textClass: 'font-bold text-base leading-4',
     onClick: false
   };
@@ -74,7 +74,7 @@ export class DashboardComponent implements OnInit {
         icon: 'delete',
         color: 'bg-gradient-to-r from-orange-400/90 to-red-400',
         tooltip: 'lbl.tooltip.delete',
-        onClick: (value) => this.deleteProduct(),
+        onClick: (value) => this.deleteProduct(value),
       },
     ],
     buttons: [
@@ -88,6 +88,35 @@ export class DashboardComponent implements OnInit {
     getData: () => this.dataObservable,
   };
 
+  data = {
+    content: [
+      {
+        name: 'Manzana',
+        description: 'Manzana roja fresca y jugosa',
+        price: 0.99,
+        quantity: 50,
+      },
+      {
+        name: 'Plátano',
+        description: 'Plátano maduro y dulce',
+        price: 0.49,
+        quantity: 30,
+      },
+      {
+        name: 'Zanahoria',
+        description: 'Zanahoria fresca y crujiente',
+        price: 1.25,
+        quantity: 20,
+      },
+      {
+        name: 'Tomate',
+        description: 'Tomate rojo y jugoso',
+        price: 0.75,
+        quantity: 40,
+      },
+    ],
+  };
+
   dataObservable: ReplaySubject<any> = new ReplaySubject<any>(1);
   totalItemsCity: number = 0;
   rangeDataCity: number = 15;
@@ -96,6 +125,7 @@ export class DashboardComponent implements OnInit {
   meals: any[] = [];
   params: any;
   user: User;
+
 
   constructor(
     private _translocoService: TranslocoService,
@@ -117,6 +147,7 @@ export class DashboardComponent implements OnInit {
     this.getData();
   }
 
+  /* Data */
   getMeals(): void {
     this._mealService.getMeals().subscribe((data) => {
       const filteredMeals = data.meals.filter(meal => meal.idMeal !== '52997');
@@ -142,43 +173,14 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  /* Table filling service */
   getData(...params: any): void {
-    const data = {
-      content: [
-        {
-          name: 'Manzana',
-          description: 'Manzana roja fresca y jugosa',
-          price: 0.99,
-          quantity: 50,
-        },
-        {
-          name: 'Plátano',
-          description: 'Plátano maduro y dulce',
-          price: 0.49,
-          quantity: 30,
-        },
-        {
-          name: 'Zanahoria',
-          description: 'Zanahoria fresca y crujiente',
-          price: 1.25,
-          quantity: 20,
-        },
-        {
-          name: 'Tomate',
-          description: 'Tomate rojo y jugoso',
-          price: 0.75,
-          quantity: 40,
-        },
-      ],
-    };
-
-    this.dataObservable.next(data);
+    this.dataObservable.next(this.data);
 
     if (params[0]) {
       this.params = { ...this.params, ...params[0]['0'] };
     }
   }
+
 
   /* Product options */
   editProduct(product: Product): void {
@@ -209,7 +211,7 @@ export class DashboardComponent implements OnInit {
   }
 
   registerProduct(): void {
-    const confirmDeleteModal: ProductModal = {
+    const modalData: ProductModal = {
       message: 'Crear producto',
       acceptOption: 'Crear',
       content: null
@@ -218,7 +220,7 @@ export class DashboardComponent implements OnInit {
     this._matDialog
       .open(ProductDialogComponent, {
         width: '300px',
-        data: confirmDeleteModal
+        data: modalData
       }).afterClosed().subscribe((confirmed) => {
         if (confirmed) {
           const successModal: Modal = {
@@ -235,7 +237,7 @@ export class DashboardComponent implements OnInit {
       });
   }
 
-  deleteProduct(): void {
+  deleteProduct(product: Product): void {
     const confirmDeleteModal: Modal = {
       message: '¿Seguro que quiere eliminar el producto?',
       success: false,
@@ -264,9 +266,5 @@ export class DashboardComponent implements OnInit {
 
   signOut(): void {
     this._router.navigateByUrl('/sign-out');
-  }
-
-  signUp() {
-    this._router.navigateByUrl('/sign-up');
   }
 }

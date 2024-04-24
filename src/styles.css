@@ -47,12 +47,17 @@ body {
 
 @media (max-width: 400px) {
     .mat-dialog-container {
-      max-width: 87%;
+        max-width: 87%;
+        max-height: 87%;
     }
-  }
-  
-  @media (min-width: 401px) {
+}
+
+@media (min-width: 401px) {
     .mat-dialog-container {
-      max-width: 40%;
+        max-width: 40%;
     }
-  }
+}
+
+.mat-mdc-dialog-container .mdc-dialog__surface {
+    border-radius: 20px !important;
+}

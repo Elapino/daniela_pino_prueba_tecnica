@@ -20,7 +20,7 @@
 			"accept": "Acepto",
 			"go": "Ir a",
 			"message": "Maquetado diseñado con Angular 17 y Tailwind por Daniela Pino. En esta etapa, el aplicativo no tiene conexiones a servicios para centrarse en la evaluación solo de la parte del frontend",
-			"policyPrivacy": "la política de privacidad y protección de datos"
+			"greenMarket": "Green Market"
 		},
 		"tooltip": {
 			"delete": "Eliminar registro",
@@ -31,6 +31,7 @@
 			"shoppingCar": "Mi carrito de compras"
 		},
 		"modal": {
+			"orderDetail": "Detalles de la orden",
 			"addToCar": "Añadir al carrito",
 			"car": "Carrito de Compras",
 			"addToCarText": "Seleccione la cantidad del producto que desea añadir al carrito",
@@ -46,11 +47,13 @@
 			"name": "Nombre",
 			"description": "Descripción",
 			"price": "Precio",
+			"emptyCartMessage": "El carrito de compras está vacio",
 			"quantity": "Cantidad",
 			"quantityAvailable": "Cantidad disponible",
 			"meal": "¡Descubre comidas de interés para tu negocio!",
 			"productText": "¡Descubre productos de interés para tu negocio!",
 			"mealText": "Se ha implementado una API gratuita para brindarte aún más opciones.",
+			"productText1": "Se ha implementado una API gratuita para brindarte aún más opciones. Una disculpa de antemano si, en algún momento, los registros no incluyen imágenes o si el titulo y la descripción no es coherente",
 			"product": "Productos",
 			"registerProduct": "Registrar producto"
 		},
@@ -59,6 +62,7 @@
 			"filter": "Filtro de busquedad"
 		},
 		"button": {
+			"backToCar": "Volver al carrito",
 			"continue": "Continuar",
 			"back": "Regresar",
 			"confirm": "Confirmar",
@@ -74,6 +78,7 @@
 			"save": "Guardar",
 			"pay": "Pagar",
 			"close": "Cerrar",
+			"total": "Total:",
 			"checkIn": "Registrarse"
 		}
 	},

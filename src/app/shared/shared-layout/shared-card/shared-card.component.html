@@ -1,21 +1,21 @@
 <div (click)="card?.onClick == false ? '' : openAddToCartModal()" *transloco="let t"
-   [ngClass]="card?.class ?? 'max-w-52 min-h-64 max-h-64'"
-   class="rounded mx-3 border-black/20 border-2 overflow-hidden shadow-xl bg-white w-full transition duration-300 transform hover:text-principal-0 hover:border-none hover:scale-105 hover:bg-gradient-to-r hover:from-orange-400/90 hover:to-red-400/80">
+   [ngClass]="card?.class ?? 'min-w-52 max-w-52 min-h-64 max-h-64'"
+   class="rounded border-black/20 border-2 overflow-hidden shadow-xl bg-white w-full transition duration-300 transform hover:text-principal-0 hover:border-none hover:scale-105 hover:bg-gradient-to-r hover:from-orange-400/90 hover:to-red-400/80">
   <img [src]="product.imageUrl" alt="Product" class="w-full h-28 object-cover">
 
-  <div [ngClass]="{'text-center': !product.description}" class="px-6 py-4">
+  <div [ngClass]="{'text-center items-center flex place-content-center': !product.description}" class="px-6 py-4 h-16">
     <span [ngClass]="card?.textClass ?? 'font-bold text-xl mb-2'" class="block">{{ product.name }}</span>
-    <p class="text-gray-700 text-base">{{ product.description }}</p>
+    <p *ngIf="product.description" class="text-gray-700 text-base">{{ product.description }}</p>
   </div>
   
-  <div *ngIf="product.price || product.quantity" class="px-6 pt-2 pb-4">
+  <div *ngIf="product.price || product.quantity" class="px-6 text-center pt-6 pb-4">
     <span *ngIf="product.price" [matTooltip]="t('lbl.product.price')"
       class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
       {{ product.price | currency }}
     </span>
     <span *ngIf="product.quantity" [matTooltip]="t('lbl.product.quantityAvailable')"
       class="inline-block bg-green-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">
-      {{ product.quantity }} en stock
+      stock {{ product.quantity }}
     </span>
   </div>
 </div>

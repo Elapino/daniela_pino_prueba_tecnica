@@ -1,11 +1,11 @@
 <div *transloco="let t"
   class="min-h-screen flex justify-center items-center bg-principal-0 sm:bg-gradient-to-r sm:from-orange-400/90 sm:to-red-400/80">
 
-  <div class="bg-principal-0 p-8 rounded-2xl sm:shadow-lg text-center w-full sm:w-100 relative">
+  <div class="bg-principal-0 p-8 mt-10 rounded-2xl sm:shadow-lg text-center w-full sm:w-100 relative">
     <img src="./assets/image/icon/profile.PNG" alt="Preview"
-      class="absolute rounded-full top-0 left-0 right-0 mx-auto -mt-16 w-32">
+      class="absolute rounded-full top-0 left-0 right-0 mx-auto -mt-16 w-28">
 
-    <form class="mt-14" [formGroup]="signInForm" #signInNgForm="ngForm">
+    <form class="mt-8" [formGroup]="signInForm" #signInNgForm="ngForm">
       <span class="text-red-400 text-3xl font-bold">{{ t('lbl.auth.signInText') }}</span>
 
       <!-- Email field -->
