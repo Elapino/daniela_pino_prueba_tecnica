@@ -92,7 +92,7 @@ export class DashboardComponent implements OnInit {
     content: [
       {
         name: 'Manzana',
-        description: 'Manzana roja fresca y jugosa',
+        description: 'Manzana roja jugosa',
         price: 0.99,
         quantity: 50,
       },
@@ -104,7 +104,7 @@ export class DashboardComponent implements OnInit {
       },
       {
         name: 'Zanahoria',
-        description: 'Zanahoria fresca y crujiente',
+        description: 'Zanahoria crujiente',
         price: 1.25,
         quantity: 20,
       },
