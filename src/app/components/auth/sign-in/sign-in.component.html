@@ -43,8 +43,11 @@
       <button (click)="signIn()" [ngClass]="{
         'opacity-1': signInForm.valid,
         'opacity-50': signInForm.invalid
-         }" [disabled]="signInForm.invalid" class="bg-gradient-to-r from-orange-400/90 to-red-400/80 text-white p-4 mt-4 rounded-full w-full">
+         }" [disabled]="signInForm.invalid"
+        class="bg-gradient-to-r from-orange-400/90 to-red-400/80 text-white p-4 my-4 rounded-full w-full">
         {{ t('lbl.button.signIn') }}</button>
+      <a [routerLink]="['/catalog']" class="hover:underline text-base text-red-400">{{ t('lbl.auth.returnMarket') }}</a>
+    
     </form>
   </div>
 </div>

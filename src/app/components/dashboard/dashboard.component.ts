@@ -182,7 +182,7 @@ export class DashboardComponent implements OnInit {
   /* Product options */
   editProduct(user: User): void {
     const confirmDeleteModal: Modal = {
-      message: 'Crear producto',
+      message: 'Editar producto',
       success: false,
       acceptOption: 'Aceptar',
       cancelOption: true
@@ -210,7 +210,7 @@ export class DashboardComponent implements OnInit {
 
   registerProduct(): void {
     const confirmDeleteModal: Modal = {
-      message: 'Editar producto',
+      message: 'Crear producto',
       success: false,
       acceptOption: 'Aceptar',
       cancelOption: true

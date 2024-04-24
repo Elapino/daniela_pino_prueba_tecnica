@@ -101,9 +101,10 @@
       <button (click)="signUp()" [ngClass]="{
         'opacity-1': signUpForm.valid,
         'opacity-50': signUpForm.invalid
-          }" [disabled]="signUpForm.invalid" class="bg-gradient-to-r from-orange-400/90 to-red-400/80 text-white p-4 mt-8 rounded-full w-full">
+          }" [disabled]="signUpForm.invalid" class="bg-gradient-to-r from-orange-400/90 to-red-400/80 text-white p-4 mt-8 mb-4 rounded-full w-full">
         {{ t('lbl.button.checkIn') }}
       </button>
+      <a [routerLink]="['/catalog']" class="hover:underline text-base text-red-400">{{ t('lbl.auth.returnMarket') }}</a>
 
     </form>
   </div>

@@ -1,14 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, NgForm, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { SharedModule } from 'app/shared/shared.module';
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
   encapsulation: ViewEncapsulation.None,
-  imports: [CommonModule, SharedModule],
+  imports: [CommonModule, RouterLink, SharedModule],
   templateUrl: './sign-up.component.html',
 })
 export class SignUpComponent implements OnInit {

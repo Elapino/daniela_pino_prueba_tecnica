@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { User } from 'app/models/user.model';
 import { SharedModule } from 'app/shared/shared.module';
 import { CommonModule } from '@angular/common';
@@ -10,7 +10,7 @@ import { UserService } from 'app/services/user.service';
   selector: 'app-sign-in',
   standalone: true,
   encapsulation: ViewEncapsulation.None,
-  imports: [CommonModule, SharedModule],
+  imports: [CommonModule, SharedModule, RouterLink],
   templateUrl: './sign-in.component.html',
 })
 export class SignInComponent implements OnInit {
