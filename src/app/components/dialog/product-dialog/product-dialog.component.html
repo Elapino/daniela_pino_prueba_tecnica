@@ -1,11 +1,10 @@
 <mat-dialog-title *transloco="let t" class="flex bg-principal-0 w-full flex-wrap justify-center">
-  <img [src]="data?.success ? 'https://cdn-icons-png.flaticon.com/512/5147/5147892.png' : 'https://cdn-icons-png.freepik.com/256/6013/6013702.png?semt=ais_hybrid'" alt="Preview"
-    class="mx-auto mt-6 w-24">
-  <div class="w-full flex p-2">
-    <span class="w-full block justify-center text-center text-principal-100 leading-5 pt-2 text-lg">
-      {{ data.message }}
-    </span>
+  <div class="w-full flex py-4 px-2">
+      <span class="w-full flex justify-start text-red-400 leading-5 text-lg pl-3 font-bold">
+        {{ data.message }}
+      </span>
   </div>
+  <mat-divider class="w-full"></mat-divider>
 </mat-dialog-title>
 
 <mat-dialog-actions *transloco="let t" class="flex bg-principal-0">
