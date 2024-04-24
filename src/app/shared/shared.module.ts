@@ -88,7 +88,7 @@ import {MatListModule} from '@angular/material/list';
     providers: [
       provideTransloco({
         config: {
-            availableLangs: ['en', 'es'],
+            availableLangs: ['es'],
             defaultLang: 'es',
             reRenderOnLangChange: true,
             prodMode: !isDevMode(),

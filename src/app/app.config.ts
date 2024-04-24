@@ -11,7 +11,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes), provideClientHydration(), CommonModule, provideAnimations(), provideHttpClient(), provideTransloco({
     config: {
-      availableLangs: ['en', 'es'],
+      availableLangs: ['es'],
       defaultLang: 'es',
       reRenderOnLangChange: true,
       prodMode: !isDevMode(),

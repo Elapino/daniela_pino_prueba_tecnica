@@ -12,7 +12,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 export class AppComponent {
   
   title = 'angular-i18n-transloco';
-  selectLang = 'en';
+  selectLang = 'es';
 
   constructor(private translocoService: TranslocoService) {
     this.selectLanguage();
